@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link type="text/css" rel="stylesheet" href="../static/styles/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>BlogLite</title>
+</head>
+
+<body class="text-center">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column align-items-center justify-content-center">
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading display-1">BlogLite</h1>
+        <p class="lead">BlogLite is your one - stop to catch up with long lost friends, post about your adventures, and build a community with people you care about.</p>
+        <p class="lead">
+          <a href="{{ url_for('login') }}" class="btn btn-lg btn-secondary">Login</a>
+          <a href="{{ url_for('register') }}" class="btn btn-lg btn-secondary">Sign Up</a>
+        </p>
+    </main>
+    </div>
+</body>
+</html>

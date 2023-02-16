@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="../static/styles/my_profile.css">
+    <title>My Profile</title>
+</head>
+
+{%extends "layout.html" %}
+{% block body %}
+<body>
+    <section class="profile-header">
+            <div class="card bg-light">
+                <div class="flex-row" style="background-color: rgb(207, 223, 237);">
+                <div class="row justify-content-center">
+                    <div class="col text-center">
+                        <br><img src="../static/images/{{ user['image_file'] }}" class="img-thumbnail mx-auto d-block" style="width: 150px;"><br>
+                        <h2 class="text-center">{{ user["firstname"] }} {{ user["lastname"] }} </h2>
+                        <div class="text-center text-primary">@{{ user["username"] }}</div><br>
+                        <!-- <a class="btn btn-primary text-center" href="#">Follow</a><br><br> -->
+                        {% if user != current_user %}
+                            {% if flag %}
+                                <a class="btn btn-primary text-center" href="{{url_for('unfollow_user', username = username)}}">Unfollow</a><br><br>
+                            {% endif %}
+                            {% if not flag %}
+                                <a class="btn btn-primary text-center" href="{{url_for('follow_user', username = username)}}">Follow</a><br><br>
+                            {% endif %}
+                        {% endif %}
+                        <div class="row text-center">
+                            <div class="col-sm"><p class="lead">Posts</p></div>
+                            <div class="col-sm"><p class="lead">Followers</p></div>
+                            <div class="col-sm"><p class="lead">Follows</p></div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-sm"><p class="font-weight-bold text-primary">{{ post_count }}</p></div>
+                            <div class="col-sm"><p class="font-weight-bold text-primary">{{ follower_count }}</p></div>
+                            <div class="col-sm"><p class="font-weight-bold text-primary">{{ following_count }}</p></div>
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </section>
+    <section class="posts">
+        <div class="row justify-content-center">
+            <div class="col">
+              {% for article in articles %}
+              <div class="card bg-light mb-3">
+                  <img class="card-img-top" src="../static/images/{{ article['image_file']}}">
+                  <div class="card-body">
+  
+                      <h5 class="card-title">{{article["title"]}}</h5>
+  
+                      {% for author in article["authors"] %}
+                      <p class="blog-post-meta">Written by <a href="/user/{{author['username']}}">{{ author["username"] }}</a></p>
+                      {% endfor %}
+  
+                      <p class="card-text">{{article['content']}}</p>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+    </section>
+</body>
+{% endblock %}
+</html>

@@ -1,0 +1,15 @@
+html,
+body {
+  height: 100%;
+}
+
+.navbar-brand{
+    font-family: 'Pacifico', cursive;
+    background: -webkit-linear-gradient(#0061ff, #60efff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-item{
+    padding:0.5rem;
+}
